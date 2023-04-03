@@ -11,7 +11,7 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f #v2: v2.3.4 available
         with:
-          ref: develop
+          ref: master
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.3.0
         with:
