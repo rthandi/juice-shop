@@ -1,8 +1,7 @@
 name: "ZAP Baseline Scan"
 
 on:
-  schedule:
-    - cron:  '0 18 * * 6'
+  pull_request: {}
 
 jobs:
   zap_scan:
@@ -12,11 +11,10 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f #v2: v2.3.4 available
         with:
-          ref: develop
+          ref: master
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.3.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://preview.owasp-juice.shop'
-          rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a -j'
