@@ -1,8 +1,7 @@
 name: "ZAP Baseline Scan"
 
 on:
-  schedule:
-    - cron:  '0 18 * * 6'
+  pull_request: {}
 
 jobs:
   zap_scan:
@@ -18,5 +17,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://preview.owasp-juice.shop'
-          rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a -j'
